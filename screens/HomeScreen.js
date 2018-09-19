@@ -36,7 +36,7 @@ export default class HomeScreen extends React.Component {
 
 
             <Text style={styles.subTitleText}>
-            You have 13 vehicles in the garage.
+            You have 5 vehicles in the garage.
             </Text>
           </View>
 

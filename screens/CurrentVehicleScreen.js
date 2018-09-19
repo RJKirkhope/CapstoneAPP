@@ -37,15 +37,6 @@ export default class CurrentVehicleScreen extends React.Component {
        <Text style = {styles.textStyle}> Other Notes: </Text>
       </ScrollView>
 
-      <View>
-      <TextInput placeholder = 'note'>
-      Type
-      </TextInput>
-      <TouchableOpacity>
-<Text> This is a Button </Text>
-      </TouchableOpacity>  
-      </View>
-
       </View>
     );
   }
@@ -65,7 +56,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   textStyleHeader: {
-    marginTop: 5,
+    marginTop: 15,
     fontSize: 24,
     color: '#E55812',
     lineHeight: 24,
