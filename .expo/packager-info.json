@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19002,
   "packagerPort": 19003,
-  "packagerPid": 66933,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 73511,
+  "expoServerNgrokUrl": "https://hk-sgr.rjkirkhope.capstoneapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.hk-sgr.rjkirkhope.capstoneapp.exp.direct",
+  "ngrokPid": 73526
 }
