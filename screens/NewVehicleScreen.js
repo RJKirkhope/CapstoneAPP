@@ -92,19 +92,28 @@ export default class NewVehicleScreen extends React.Component {
       Year: Year,
       Color: Color
     }
-    AsyncStorage.setItem('vehicle', JSON.stringify(vehicle))
-  }
+    AsyncStorage.getItem('vehicles', (error, result) => {
+      if(!result){
+        vehicle.id=1
+        AsyncStorage.setItem('vehicles', JSON.stringify([vehicle]))
+      }
+      else{ 
+        let parsedVehicles = JSON.parse(result)
+        vehicle.id = parsedVehicles.length + 1
+        parsedVehicles.push(vehicle)
+        AsyncStorage.setItem('vehicles', JSON.stringify(parsedVehicles))
 
-  showData = async () => {
-    try{
-let vehicle = await AsyncStorage.getItem('vehicle')
-let parsed = JSON.parse(vehicle)
-alert(parsed.Make + ' ' + parsed.Model + ' ' + parsed.Year + ' ' + parsed.Color + ' ' + 'Has been added to your garage')
-    }
-    catch(error){
-alert(error)
-    }
+        alert(JSON.stringify(parsedVehicles))
+      }
+      if (error){
+        alert('error')
+      }
+      
+    }) 
   }
+  showData = async () => { AsyncStorage.clear()
+  }
+  
 }
 
 
