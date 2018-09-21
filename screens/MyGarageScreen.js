@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  AsyncStorage,
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 
@@ -36,6 +37,10 @@ export default class MyGarageScreen extends React.Component {
     )
   }
 }
+AsyncStorage.getItem('vehicles')
+.then((vehicles) => { 
+  console.log(vehicles, 'On MyGarage');
+});
 const list = [
   {
     Make: 'Kawasaki',

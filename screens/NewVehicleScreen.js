@@ -22,8 +22,8 @@ export default class NewVehicleScreen extends React.Component {
     <View style={styles.container}>
     <View> <Text style = {styles.textStyleHeader}> New Vehicle </Text> </View>
     <Text style = {styles.textStyle}> Use this form to create a new vehicle to add to your garage.</Text>
+    <ScrollView>
 <View>
-
 <FormLabel>Make</FormLabel>
 <FormInput onChangeText={Make => this.setState({Make})}/>
 <FormLabel>Model</FormLabel>
@@ -32,6 +32,24 @@ export default class NewVehicleScreen extends React.Component {
 <FormInput onChangeText={Year => this.setState({Year})}/>
 <FormLabel>Color</FormLabel>
 <FormInput onChangeText={Color => this.setState({Color})}/>
+<FormLabel>Oil</FormLabel>
+<FormInput onChangeText={Oil => this.setState({Oil})}/>
+<FormLabel>Brakes</FormLabel>
+<FormInput onChangeText={Brakes => this.setState({Brakes})}/>
+<FormLabel>Air Filters</FormLabel>
+<FormInput onChangeText={AirFilters => this.setState({AirFilters})}/>
+<FormLabel>Spark Plugs</FormLabel>
+<FormInput onChangeText={SparkPlugs => this.setState({SparkPlugs})}/>
+<FormLabel>Wipers</FormLabel>
+<FormInput onChangeText={Wipers => this.setState({Wipers})}/>
+<FormLabel>Tires</FormLabel>
+<FormInput onChangeText={Tires => this.setState({Tires})}/>
+<FormLabel>Battery</FormLabel>
+<FormInput onChangeText={Battery => this.setState({Battery})}/>
+<FormLabel>Lights</FormLabel>
+<FormInput onChangeText={Lights => this.setState({Lights})}/>
+<FormLabel>Other</FormLabel>
+<FormInput onChangeText={Other => this.setState({Other})}/>
 <FormValidationMessage></FormValidationMessage>
 <View>
 <Text> {this.state.storedData} </Text>
@@ -51,7 +69,7 @@ export default class NewVehicleScreen extends React.Component {
   borderRadius: 5}}
  onPress = {this.saveData}/>
 
- <Button 
+ {/* <Button 
  title='Show Data'
  buttonStyle={{
   marginLeft: 25,
@@ -62,8 +80,10 @@ export default class NewVehicleScreen extends React.Component {
   borderColor: "transparent",
   borderWidth: 0,
   borderRadius: 5}}
- onPress = {this.showData}/>
+ onPress = {this.showData}/> */}
+  </ScrollView>
   </View> 
+ 
   )}
   constructor(props){
     super(props)
@@ -103,7 +123,8 @@ export default class NewVehicleScreen extends React.Component {
         parsedVehicles.push(vehicle)
         AsyncStorage.setItem('vehicles', JSON.stringify(parsedVehicles))
 
-        alert(JSON.stringify(parsedVehicles))
+        // alert(JSON.stringify(parsedVehicles))
+        alert ('New Vehicle Added To Garage')
       }
       if (error){
         alert('error')
@@ -111,8 +132,8 @@ export default class NewVehicleScreen extends React.Component {
       
     }) 
   }
-  showData = async () => { AsyncStorage.clear()
-  }
+  // showData = async () => { AsyncStorage.clear()
+  // }
   
 }
 

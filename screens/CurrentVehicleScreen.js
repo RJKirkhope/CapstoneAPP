@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  AsyncStorage,
 } from 'react-native';
 
 export default class CurrentVehicleScreen extends React.Component {
@@ -41,7 +42,10 @@ export default class CurrentVehicleScreen extends React.Component {
     );
   }
 }
-
+AsyncStorage.getItem('vehicles')
+.then((vehicles) => { 
+  console.log(vehicles, 'On Current Vehicle');
+});
 const styles = StyleSheet.create({
   container: {
     flex: 1,

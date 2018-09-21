@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  AsyncStorage,
 } from 'react-native';
 
 export default class HomeScreen extends React.Component {
@@ -47,6 +48,10 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+AsyncStorage.getItem('vehicles')
+.then((vehicles) => { 
+  console.log(vehicles, "On Home");
+});
 
 const styles = StyleSheet.create({
   container: {
