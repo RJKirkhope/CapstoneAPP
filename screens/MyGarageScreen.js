@@ -9,70 +9,65 @@ import {
   View,
   AsyncStorage,
 } from 'react-native';
-import { List, ListItem } from 'react-native-elements'
+import { List, ListItem, Button, Left, Body, Right, Card } from 'react-native-elements'
+
+import VehicleList from './NewVehicleScreen'
 
 export default class MyGarageScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-  
+  constructor(){
+    super()
+    this.state = {
+      VList : ''
+    }
+    try{
+      AsyncStorage.getItem('vehicles').then((vehicles) => { 
+        this.setState({
+          VList: JSON.parse(vehicles)
+        })
+      });
+    } catch(err){
+      console.log(err)
+    }
+  }
+  parseData(){
+    if(this.state.VList)
+      return(this.state.VList.map((data, i) => {
+        return(
+          <View key = {data.id} >
+          {<List containerStyle={{marginBottom: -15}}>
+              <ListItem 
+                key={data.id}
+                title={data.Model}
+                subtitle={data.Make}
+                onPressRightIcon = {this.showAlert}
+              />
+        </List>}
+          </View>
+        ) 
+      })
+    )}
 
-  render() {
-    return (
-    <View style={styles.container}>
-    <View> <Text style = {styles.textStyleHeader}> My Garage </Text> </View>
-    <Text style = {styles.textStyle}> Scroll through your vehicle cards, select which one you are currently working on.</Text>
-    <List containerStyle={{marginBottom: 20}}>
-  {
-    list.map((l) => (
-      <ListItem
-        key={l.Model}
-        title={l.Model}
-        subtitle={l.Make}
-      />
-    ))
-  }
-</List>
-    </View>
-    )
-  }
+render() {
+const Vdata = JSON.stringify(this.state.VList)
+return (
+  <View style={styles.container}>
+  <View> <Text style = {styles.textStyleHeader}> My Garage </Text> </View>
+  <Text style = {styles.textStyle}> Scroll through your vehicle cards, select which one you are currently working on.</Text>
+
+  {this.parseData()}
+  <Text> {Vdata} </Text>
+  </View>
+  )
 }
-AsyncStorage.getItem('vehicles')
-.then((vehicles) => { 
-  console.log(vehicles, 'On MyGarage');
-});
-const list = [
-  {
-    Make: 'Kawasaki',
-    Model: 'KLR 650(2015)',
-    Year: '2015',
-    Color:'White'
-  },
-  {
-    Make: 'Suzuki',
-    Model: 'DR 650(2014)',
-    Year: '2014',
-    Color: 'Grey'
-  },
-  {
-    Make:'Subaru',
-    Model:'Crosstreck(2017)',
-    Year: '2017',
-    Color:'Dark Grey',
-  },
-  {
-    Make:'Toyota',
-    Model:'Camry(2000)',
-    Year: '2000',
-    Color:'Silver',
-  },
-  {
-    Make:'Kawasaki',
-    Model:'KLR 650(2008)',
-    Year: '2008',
-    Color:'Mostly Black',
-  },
-]
+
+showAlert(){
+  alert('Why is this so hard to figure out?')
+}
+
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -95,4 +90,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-

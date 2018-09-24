@@ -14,8 +14,39 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  constructor(){
+    super()
+    this.state = {
+      VList : ''
+    }
+    try{
+      AsyncStorage.getItem('vehicles').then((vehicles) => { 
+        this.setState({
+          VList: JSON.parse(vehicles)
+        })
+      });
+    } catch(err){
+      console.log(err)
+    }
+  }
+  parseData(){
+    if(this.state.VList){
+      return(
+<View> 
+<Text style={styles.dataText} > {this.state.VList.length} </Text>
+</View>
+  )}
+  else{
+    <View>
+      <Text style={styles.dataText} > 0 </Text>
+      </View>
+  }
+    
+    }
 
   render() {
+    // const Vdata = JSON.stringify(this.state.VList)
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -37,7 +68,7 @@ export default class HomeScreen extends React.Component {
 
 
             <Text style={styles.subTitleText}>
-            You have 5 vehicles in the garage.
+            You have{this.parseData()} vehicles in the garage.
             </Text>
           </View>
 
@@ -85,6 +116,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#E55812',
     lineHeight: 24,
+    textAlign: 'center',
+  },
+  dataText: {
+    marginTop: 0,
+    fontSize: 30,
+    color: '#E55812',
+    lineHeight: 30,
     textAlign: 'center',
   },
 });

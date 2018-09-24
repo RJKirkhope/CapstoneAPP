@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19002,
+  "expoServerPort": 19000,
   "packagerPort": 19003,
-  "packagerPid": 81228,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 9756,
+  "expoServerNgrokUrl": "https://cb-q46.rjkirkhope.capstoneapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.cb-q46.rjkirkhope.capstoneapp.exp.direct",
+  "ngrokPid": 9768
 }

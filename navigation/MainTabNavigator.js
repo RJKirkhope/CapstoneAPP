@@ -1,10 +1,12 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import CurrentVehicleScreen from '../screens/CurrentVehicleScreen';
 import MyGarageScreen from '../screens/MyGarageScreen';
 import NewVehicleScreen from '../screens/NewVehicleScreen'
 
@@ -18,26 +20,7 @@ LinksHome.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'}
-    />
-  ),
-};
-
-const LinksCurrentVehicle = createStackNavigator({
-  Links: CurrentVehicleScreen,
-});
-
-LinksCurrentVehicle.navigationOptions = {
-  tabBarLabel: 'Current Vehicle',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios'
-      ? `ios-information-circle${focused ? '' : '-outline'}`
-      : 'md-information-circle'}
+      name={Platform.OS === 'ios' ? `ios-home${focused ? '' : '-outline'}` : 'md-home'}
     />
   ),
 };
@@ -51,9 +34,7 @@ LinksNewVehicle.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios'
-      ? `ios-information-circle${focused ? '' : '-outline'}`
-        : 'md-information-circle'}
+      name={Platform.OS === 'ios' ? `ios-add${focused ? '' : '-outline'}` : 'md-add'}
     />
   ),
 };
@@ -67,16 +48,13 @@ LinksGarage.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios'
-      ? `ios-information-circle${focused ? '' : '-outline'}`
-      : 'md-information-circle'}
+      name={Platform.OS === 'ios' ? `ios-car${focused ? '' : '-outline'}` : 'md-car'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   LinksHome,
-  LinksCurrentVehicle,
   LinksNewVehicle,
   LinksGarage,
 });

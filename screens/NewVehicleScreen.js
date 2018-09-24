@@ -122,7 +122,6 @@ export default class NewVehicleScreen extends React.Component {
         vehicle.id = parsedVehicles.length + 1
         parsedVehicles.push(vehicle)
         AsyncStorage.setItem('vehicles', JSON.stringify(parsedVehicles))
-
         // alert(JSON.stringify(parsedVehicles))
         alert ('New Vehicle Added To Garage')
       }
