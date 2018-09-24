@@ -105,13 +105,22 @@ export default class NewVehicleScreen extends React.Component {
     }
   }
   saveData =() => {
-    const {Make,Model,Year,Color} = this.state
+    const {Make,Model,Year,Color,Oil,Brakes,AirFilters,SparkPlugs,Wipers,Tires,Battery,Lights,Other} = this.state
 
     let vehicle={
       Make: Make,
       Model: Model,
       Year: Year,
-      Color: Color
+      Color: Color,
+      Oil: Oil,
+      Brakes: Brakes,
+      AirFilters: AirFilters,
+      SparkPlugs: SparkPlugs,
+      Wipers: Wipers,
+      Tires: Tires,
+      Battery: Battery,
+      Lights: Lights,
+      Other: Other,
     }
     AsyncStorage.getItem('vehicles', (error, result) => {
       if(!result){
@@ -142,7 +151,7 @@ export default class NewVehicleScreen extends React.Component {
       
     }) 
   }
-//  showData = async () => { AsyncStorage.clear()
+// showData = async () => { AsyncStorage.clear()
 //   } 
   
 }

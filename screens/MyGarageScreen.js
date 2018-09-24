@@ -37,14 +37,24 @@ export default class MyGarageScreen extends React.Component {
       return(this.state.VList.map((data, i) => {
         return(
           <View key = {data.id} >
-          {<List containerStyle={{marginBottom: -15}}>
+          {<List containerStyle={{marginBottom: -30, minHeight: 40}}>
               <ListItem 
                 key={data.id}
-                title={data.Model}
-                subtitle={data.Make}
+                title={data.Make + ' ' + data.Model}
+                subtitle={data.Color +' '+ data.Year}
                 onPressRightIcon = {this.showAlert}
               />
         </List>}
+
+<Text style= {styles.textContainer} >Oil:{data.Oil} </Text> 
+<Text style= {styles.textContainer2} >Brakes:{data.Brakes} </Text>
+<Text style= {styles.textContainer2} >AirFilters:{data.AirFilters}</Text>
+<Text style= {styles.textContainer2} >SparkPlugs:{data.SparkPlugs}</Text>
+<Text style= {styles.textContainer2} >Wipers:{data.Wipers}</Text>
+<Text style= {styles.textContainer2} >Tires:{data.Tires}</Text>
+<Text style= {styles.textContainer2} >Battery:{data.Battery}</Text>
+<Text style= {styles.textContainer2} >Lights:{data.Lights}</Text>
+<Text style= {styles.textContainer2} >Other:{data.Other}</Text>
           </View>
         ) 
       })
@@ -62,14 +72,9 @@ return (
   )
 }
 
-showAlert(){
-  alert('Why is this so hard to figure out?')
-}
+
 
 }
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -90,4 +95,16 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'center',
   },
+  textContainer:{
+    marginTop: 35,
+    fontSize:20,
+    color: '#E55812',
+    lineHeight:20,
+  },
+  textContainer2:{
+    marginTop: 5,
+    fontSize:20,
+    color: '#E55812',
+    lineHeight:20,
+  }
 });
