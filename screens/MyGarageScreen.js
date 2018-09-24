@@ -58,7 +58,6 @@ return (
   <Text style = {styles.textStyle}> Scroll through your vehicle cards, select which one you are currently working on.</Text>
 
   {this.parseData()}
-  <Text> {Vdata} </Text>
   </View>
   )
 }
@@ -68,6 +67,8 @@ showAlert(){
 }
 
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

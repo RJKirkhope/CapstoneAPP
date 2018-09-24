@@ -36,16 +36,10 @@ export default class HomeScreen extends React.Component {
 <Text style={styles.dataText} > {this.state.VList.length} </Text>
 </View>
   )}
-  else{
-    <View>
-      <Text style={styles.dataText} > 0 </Text>
-      </View>
-  }
     
     }
 
   render() {
-    // const Vdata = JSON.stringify(this.state.VList)
 
     return (
       <View style={styles.container}>
@@ -79,10 +73,7 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
-AsyncStorage.getItem('vehicles')
-.then((vehicles) => { 
-  console.log(vehicles, "On Home");
-});
+
 
 const styles = StyleSheet.create({
   container: {

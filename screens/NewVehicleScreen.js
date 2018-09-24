@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage,Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import VehicleList from './MyGarageScreen'
 
 export default class NewVehicleScreen extends React.Component {
   static navigationOptions = {
@@ -115,14 +116,24 @@ export default class NewVehicleScreen extends React.Component {
     AsyncStorage.getItem('vehicles', (error, result) => {
       if(!result){
         vehicle.id=1
-        AsyncStorage.setItem('vehicles', JSON.stringify([vehicle]))
+        AsyncStorage.setItem('vehicles', JSON.stringify([vehicle])).then(() => {
+          this.props.navigation.push({
+            title:'VehicleList',
+            Component:'VehicleList'
+          })
+        })
       }
       else{ 
         let parsedVehicles = JSON.parse(result)
         vehicle.id = parsedVehicles.length + 1
         parsedVehicles.push(vehicle)
-        AsyncStorage.setItem('vehicles', JSON.stringify(parsedVehicles))
-        // alert(JSON.stringify(parsedVehicles))
+        AsyncStorage.setItem('vehicles', JSON.stringify(parsedVehicles)).then(() => {
+          this.props.navigation.push({
+            title:'VehicleList',
+            Component: VehicleList
+          })
+        })
+        .catch(err => console.error(err))
         alert ('New Vehicle Added To Garage')
       }
       if (error){
@@ -131,8 +142,8 @@ export default class NewVehicleScreen extends React.Component {
       
     }) 
   }
-  // showData = async () => { AsyncStorage.clear()
-  // }
+//  showData = async () => { AsyncStorage.clear()
+//   } 
   
 }
 
