@@ -74,16 +74,15 @@ export default class HomeScreen extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F5257',
+    backgroundColor: '#24272B',
   },
   titleText: {
     marginTop: 40,
     marginBottom: 40,
-    color: '#E55812',
+    color: '#0F7173',
     fontSize: 40,
     lineHeight: 40,
     textAlign: 'center',
@@ -105,14 +104,14 @@ const styles = StyleSheet.create({
   subTitleText: {
     marginTop: 10,
     fontSize: 20,
-    color: '#E55812',
+    color: '#0F7173',
     lineHeight: 24,
     textAlign: 'center',
   },
   dataText: {
     marginTop: 0,
     fontSize: 30,
-    color: '#E55812',
+    color: '#0F7173',
     lineHeight: 30,
     textAlign: 'center',
   },

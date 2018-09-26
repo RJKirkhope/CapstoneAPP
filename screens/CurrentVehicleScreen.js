@@ -1,51 +1,77 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  AsyncStorage,
-} from 'react-native';
+// import {
+//   Image,
+//   Platform,
+//   ScrollView,
+//   StyleSheet,
+//   Text,
+//   TextInput,
+//   TouchableOpacity,
+//   View,
+//   AsyncStorage,
+// } from 'react-native';
 
-export default class CurrentVehicleScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
 
-  render() {
-    return (
-      <View style={styles.container}>
-
-<View> <Text style = {styles.textStyleHeader}> Current Vehicle </Text> </View>
-
-      <ScrollView >
-       <Text style = {styles.textStyle}> Make: </Text>
-       <Text style = {styles.textStyle}> Model: </Text>
-       <Text style = {styles.textStyle}> Year: </Text>
-       <Text style = {styles.textStyle}> Oil: </Text>
-       <Text style = {styles.textStyle}> Brakes: </Text>
-       <Text style = {styles.textStyle}> Air Filters: </Text>
-       <Text style = {styles.textStyle}> Spark Plugs: </Text>
-       <Text style = {styles.textStyle}> Wipers: </Text>
-       <Text style = {styles.textStyle}> Tires: </Text>
-       <Text style = {styles.textStyle}> Brakes: </Text>
-       <Text style = {styles.textStyle}> Battery: </Text>
-       <Text style = {styles.textStyle}> Lights: </Text>
-       <Text style = {styles.textStyle}> Other Notes: </Text>
-      </ScrollView>
-
-      </View>
-    );
-  }
-}
-AsyncStorage.getItem('vehicles')
-.then((vehicles) => { 
-  console.log(vehicles, 'On Current Vehicle');
-});
+    import React, { Component } from 'react-native';
+    import Accordion from 'react-native-collapsible/Accordion';
+    
+    const SECTIONS = [
+      {
+        title: 'First',
+        content: 'Lorem ipsum...'
+      },
+      {
+        title: 'Second',
+        content: 'Lorem ipsum...'
+      }
+    ];
+    
+    class AccordionView extends Component {
+      state = {
+        activeSections: []
+      };
+    
+      _renderSectionTitle = section => {
+        return (
+          <View style={styles.content}>
+            <Text>{section.content}</Text>
+          </View>
+        );
+      };
+    
+      _renderHeader = section => {
+        return (
+          <View style={styles.header}>
+            <Text style={styles.headerText}>{section.title}</Text>
+          </View>
+        );
+      };
+    
+      _renderContent = section => {
+        return (
+          <View style={styles.content}>
+            <Text>{section.content}</Text>
+          </View>
+        );
+      };
+    
+      _updateSections = activeSections => {
+        this.setState({ activeSections });
+      };
+    
+      render() {
+        return (
+          <Accordion
+            sections={SECTIONS}
+            activeSections={this.state.activeSections}
+            renderSectionTitle={this._renderSectionTitle}
+            renderHeader={this._renderHeader}
+            renderContent={this._renderContent}
+            onChange={this._updateSections}
+          />
+        );
+      }
+    }
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -52,17 +52,14 @@ export default class NewVehicleScreen extends React.Component {
 <FormLabel>Other</FormLabel>
 <FormInput onChangeText={Other => this.setState({Other})}/>
 <FormValidationMessage></FormValidationMessage>
-<View>
-<Text> {this.state.storedData} </Text>
-  </View>
 </View>
 
 <Button 
  title='Add to Garage'
  buttonStyle={{
   marginLeft: 25,
-  marginTop: 25,
-  backgroundColor: "#E55812",
+  marginTop: 15,
+  backgroundColor: "#0F7173",
   width: 300,
   height: 45,
   borderColor: "transparent",
@@ -125,12 +122,13 @@ export default class NewVehicleScreen extends React.Component {
     AsyncStorage.getItem('vehicles', (error, result) => {
       if(!result){
         vehicle.id=1
-        AsyncStorage.setItem('vehicles', JSON.stringify([vehicle])).then(() => {
-          this.props.navigation.push({
-            title:'VehicleList',
-            Component:'VehicleList'
-          })
-        })
+        AsyncStorage.setItem('vehicles', JSON.stringify([vehicle]))
+        // .then(() => {
+        //   this.props.navigation.push({
+        //     // title:'VehicleList',
+        //     // Component:VehicleList 
+        //   }) 
+        // })  
       }
       else{ 
         let parsedVehicles = JSON.parse(result)
@@ -141,7 +139,7 @@ export default class NewVehicleScreen extends React.Component {
             title:'VehicleList',
             Component: VehicleList
           })
-        })
+        }) 
         .catch(err => console.error(err))
         alert ('New Vehicle Added To Garage')
       }
@@ -152,7 +150,7 @@ export default class NewVehicleScreen extends React.Component {
     }) 
   }
 // showData = async () => { AsyncStorage.clear()
-//   } 
+//   }
   
 }
 
@@ -160,20 +158,20 @@ export default class NewVehicleScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#0F5257',
+    paddingTop: 25,
+    backgroundColor: '#24272B',
   },
   textStyle: {
     marginTop: 15,
     fontSize: 14,
-    color: '#E55812',
+    color: '#0F7173',
     lineHeight: 14,
     textAlign: 'center',
   },
   textStyleHeader: {
     marginTop: 15,
     fontSize: 24,
-    color: '#E55812',
+    color: '#0F7173',
     lineHeight: 24,
     textAlign: 'center',
   },
